@@ -5,27 +5,33 @@
   "bookedOfcDate": null,
   "waitStartTime": null,
   "pending": false,
-  "trigger_timestamp": 1786972264.8960042,
-  "trigger_key": "ed61755af15695d061c8cf826a0cc9c3",
+  "trigger_timestamp": 1787135517.370846,
+  "trigger_key": "830e24158436dc0fd02b9c8f355f8ea1",
   "action_type": "SNIPER",
   "ofcCities": [
+    "CHENNAI",
     "MUMBAI",
-    "HYDERABAD"
+    "HYDERABAD",
+    "DELHI",
+    "KOLKATA"
   ],
-  "ofcPriorityCity": "HYDERABAD",
-  "ofcStartDate": "2026-10-01",
-  "ofcEndDate": "2026-12-31",
+  "ofcPriorityCity": "DELHI",
+  "ofcStartDate": "2026-10-05",
+  "ofcEndDate": "2026-12-30",
   "consularCities": [
+    "CHENNAI",
     "MUMBAI",
-    "HYDERABAD"
+    "HYDERABAD",
+    "DELHI",
+    "KOLKATA"
   ],
-  "consularPriorityCity": "MUMBAI",
-  "consularStartDate": "2026-10-01",
-  "consularEndDate": "2026-12-31",
+  "consularPriorityCity": "CHENNAI",
+  "consularStartDate": "2026-10-05",
+  "consularEndDate": "2026-12-30",
   "prevent_immediate": true,
   "multiPerson": false,
-  "rest_until": 1786975912.822762,
-  "last_booking_failure_at": 1786972312.822762,
-  "last_booking_failure_reason": "Session expired during booking attempt",
-  "completed": false
+  "rest_until": 1787139213.065713,
+  "last_booking_failure_at": 1787135613.065713,
+  "last_booking_failure_reason": "Unexpected error during booking: name 'send_slack' is not defined",
+  "completed": true
 }

@@ -625,7 +625,12 @@ def main() -> None:
                     # local `proc` captured at the top of this loop iteration.
                     current_login_proc = session.get("login_proc")
                     if current_login_proc and current_login_proc.poll() is None:
-                        kill_process_tree(current_login_proc)
+                        try:
+                            current_login_proc.terminate() # or .kill() 
+                            current_login_proc.wait(timeout=5)
+                        except Exception as e:
+                            print(f"Failed to kill process: {e}")
+                        #kill_process_tree(current_login_proc)
                     session["login_proc"] = None
                     # Hand off to background thread — main loop is never blocked
                     threading.Thread(target=handle_booking_crash, args=(session, code), daemon=True).start()

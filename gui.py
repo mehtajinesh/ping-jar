@@ -700,7 +700,7 @@ class App(tk.Tk):
         self.btn_start = ttk.Button(top_frame, text="▶ Start All Bots", style="Success.TButton", command=self._start_orchestrator)
         self.btn_start.pack(side=tk.RIGHT, padx=15)
 
-        self.btn_stop = ttk.Button(top_frame, text="⏹ Stop All", style="Danger.TButton", command=self._stop_orchestrator)
+        self.btn_stop = ttk.Button(top_frame, text="⏹ Stop All", style="Danger.TButton", command=self.stop_orchestrator)
         self.btn_stop.pack(side=tk.RIGHT, padx=5)
         self.btn_stop.state(["disabled"])
 
@@ -834,9 +834,8 @@ class App(tk.Tk):
             pass
         self.after(0, self._on_orchestrator_exit)
 
-    def _stop_orchestrator(self):
+    def stop_orchestrator(self):
         if self.orchestrator_proc:
-            self.stop_orchestrator()
             try:
                 if self.orchestrator_proc.poll() is None:
                     if os.name == 'nt':
@@ -1242,7 +1241,7 @@ class App(tk.Tk):
 
     def destroy(self):
         if self.orchestrator_proc:
-            self._stop_orchestrator()
+            self.stop_orchestrator()
             try:
                 if os.name == 'nt':
                     subprocess.run(["taskkill", "/F", "/T", "/PID", str(self.orchestrator_proc.pid)], capture_output=True)

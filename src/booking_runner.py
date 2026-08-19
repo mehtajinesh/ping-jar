@@ -54,12 +54,13 @@ from src.common.state import (
     get_state_file,
     update_state
 )
-from slack import format_slack_message, send_slack_error
+from slack import format_slack_message, send_slack_error, send_slack
 
 # Add new imports for recovery
 from src.auth.login import login, wait_for_waiting_room
 from src.auth.security import handle_security_question
 from src.polling_runner import fetch_dates_via_browser
+from gui import ACCOUNTS_FILE
 
 POLL_INTERVAL = float(os.getenv("BOOKING_POLL_INTERVAL", "0.01"))   # seconds between state file checks
 
@@ -369,7 +370,7 @@ async def _broadcast_results(results: dict, customer: str):
             acct_state_file = (
                 Path(__file__).parent / f"state_{acct_uid}.json"
             )
-            acct_state = _read_state(acct_state_file)
+            acct_state = read_state(acct_state_file)
 
             if not remote_mode and acct_state.get("extension_running"):
                 log.info(
@@ -855,7 +856,7 @@ async def run(cdp_port: int, customer: str, username: str):
         while True:
             try:
                 # ── Check Rest Period FIRST ───────────────────────────────
-                state = _read_state(state_file)
+                state = read_state(state_file)
                 rest_until = state.get("rest_until", 0)
                 is_resting = bool(rest_until and time.time() < rest_until)
                 
@@ -992,7 +993,7 @@ async def run(cdp_port: int, customer: str, username: str):
                                     "WAITING MODE is over (429 hit). "
                                     "Resetting flags."
                                 )
-update_state(
+                                update_state(
                                     state_file,
                                     {
                                         "waitingForConsular": False,
@@ -1067,7 +1068,7 @@ update_state(
                         log.info(f"✅ ACTION COMPLETED SUCCESSFULLY for '{customer}'! [{action_type}]")
                         log.info("=" * 60)
                         
-                        _update_state(
+                        update_state(
                             state_file,
                             {
                                 "waitingForConsular": False,
@@ -1120,7 +1121,7 @@ update_state(
                 await asyncio.sleep(POLL_INTERVAL)
                 
                 # ── Delayed Polling for Consular ──────────────────────────────
-                state = _read_state(state_file)
+                state = read_state(state_file)
                 if state.get("waitingForConsular") and not state.get("pending"):
                     wait_start = state.get("waitStartTime")
                     if wait_start is None:
@@ -1245,7 +1246,7 @@ update_state(
                     exc_info=True,
                 )
 
-                latest_state = _read_state(state_file)
+                latest_state = read_state(state_file)
 
                 if latest_state.get("extension_running"):
                     _enter_booking_rest(

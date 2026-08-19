@@ -55,6 +55,16 @@ def read_state(state_file: Path) -> dict:
     except Exception:
         return {}
 
+def write_state(state_file: Path, state: dict) -> None:
+    """Write the state dictionary to a JSON file."""
+    try:
+        state_file.write_text(
+            json.dumps(state, indent=2),
+            encoding="utf-8",
+        )
+    except Exception as e:
+        print(f"[STATE] ❌ Failed to write state file '{state_file}': {e}")
+
 
 def update_state(state_file: Path, state: dict) -> None:
     """
