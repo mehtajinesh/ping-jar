@@ -1,0 +1,31 @@
+{
+  "extension_running": false,
+  "customer_name": "Jinesh Mehta",
+  "waitingForConsular": false,
+  "bookedOfcDate": null,
+  "waitStartTime": null,
+  "pending": false,
+  "trigger_timestamp": 1786972264.8960042,
+  "trigger_key": "ed61755af15695d061c8cf826a0cc9c3",
+  "action_type": "SNIPER",
+  "ofcCities": [
+    "MUMBAI",
+    "HYDERABAD"
+  ],
+  "ofcPriorityCity": "HYDERABAD",
+  "ofcStartDate": "2026-10-01",
+  "ofcEndDate": "2026-12-31",
+  "consularCities": [
+    "MUMBAI",
+    "HYDERABAD"
+  ],
+  "consularPriorityCity": "MUMBAI",
+  "consularStartDate": "2026-10-01",
+  "consularEndDate": "2026-12-31",
+  "prevent_immediate": true,
+  "multiPerson": false,
+  "rest_until": 1786975912.822762,
+  "last_booking_failure_at": 1786972312.822762,
+  "last_booking_failure_reason": "Session expired during booking attempt",
+  "completed": false
+}

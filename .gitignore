@@ -141,3 +141,12 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+*__pycache__*
+extension-build/*
+chrome_profile_mehtajineshs/*
+.DS_Store
+accounts.json
+accounts_backup.json
+.venv/
+
+.env
