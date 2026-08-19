@@ -148,5 +148,6 @@ chrome_profile_mehtajineshs/*
 accounts.json
 accounts_backup.json
 .venv/
+env/
 
 .env

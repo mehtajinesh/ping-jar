@@ -269,7 +269,7 @@ def main() -> None:
     def shutdown(signum=None, frame=None):
         log("Shutting down all child processes …")
         for session in sessions:
-            kill_chrome_by_port(session.get("cdp_port"))
+            _kill_chrome_by_port(session.get("cdp_port"))
 
         for p in all_procs:
             if p.poll() is None:
