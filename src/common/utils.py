@@ -26,13 +26,10 @@ def is_active_cst_window() -> bool:
     hour = now.hour
     minute = now.minute
 
-    # Valid if hour is 23 (11 PM), or 0-7 (12 AM - 7 AM).
-    if not (hour == 23 or 0 <= hour < 8):
-        return False
-
     # Are we in the allowed minute range? (allow 5 min buffer to execute)
-    is_top_of_hour = (0 <= minute <= 5)
-    is_half_hour = (30 <= minute <= 35)
+    # Top of hour: minutes 55-59 or 0-5
+    is_top_of_hour = minute >= 55 or minute <= 5
+    is_half_hour = (25 <= minute <= 35)
 
     return is_top_of_hour or is_half_hour
 

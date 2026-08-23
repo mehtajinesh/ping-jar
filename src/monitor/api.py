@@ -92,7 +92,7 @@ def fetch_rows() -> List[Dict]:
         
         # Check for CheckVisaSlots API Quota exhaustion
         user_activity = data.get("userActivity", {})
-        print(f"Quota details(remaining API fetches on this key): {user_activity.get('remaining', 'N/A')}")
+        print(f"Quota details(remaining API fetches on key {next_key}): {user_activity.get('remaining', 'N/A')}")
         
         if "remaining" in user_activity and user_activity["remaining"] <= 500:
             remaining_fetches = user_activity["remaining"]
