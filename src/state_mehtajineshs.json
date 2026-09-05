@@ -5,33 +5,21 @@
   "bookedOfcDate": null,
   "waitStartTime": null,
   "pending": false,
-  "trigger_timestamp": 1787135517.370846,
-  "trigger_key": "830e24158436dc0fd02b9c8f355f8ea1",
-  "action_type": "SNIPER",
+  "completed": false,
+  "rest_until": 0,
+  "action_type": "RESCHEDULE_FULL",
   "ofcCities": [
-    "CHENNAI",
-    "MUMBAI",
-    "HYDERABAD",
-    "DELHI",
-    "KOLKATA"
+    "MUMBAI"
   ],
-  "ofcPriorityCity": "DELHI",
+  "ofcPriorityCity": "MUMBAI",
   "ofcStartDate": "2026-10-05",
-  "ofcEndDate": "2026-12-30",
+  "ofcEndDate": "2026-11-15",
   "consularCities": [
-    "CHENNAI",
-    "MUMBAI",
-    "HYDERABAD",
-    "DELHI",
-    "KOLKATA"
+    "MUMBAI"
   ],
-  "consularPriorityCity": "CHENNAI",
+  "consularPriorityCity": "MUMBAI",
   "consularStartDate": "2026-10-05",
-  "consularEndDate": "2026-12-30",
+  "consularEndDate": "2026-11-15",
   "prevent_immediate": true,
-  "multiPerson": false,
-  "rest_until": 1787139213.065713,
-  "last_booking_failure_at": 1787135613.065713,
-  "last_booking_failure_reason": "Unexpected error during booking: name 'send_slack' is not defined",
-  "completed": true
+  "multiPerson": false
 }
